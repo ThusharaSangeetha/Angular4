@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   '<h2>Footwear Styles</h2>'+
   // '<input [(ngModel)] = "item.name" placeholder="Enter name...">'+
   '<ul class="footies">'+
-  '<li *ngFor = "let footwear of footies" (click)="onSelect(footwear)">'+
+  '<li *ngFor = "let footwear of footies"   [class.selected]="hero === selectedHero" (click)="onSelect(footwear)">'+
   '  <span class="badge">{{footwear.id}}</span> {{footwear.name}}</li>'+
   '</ul>',
  styles: [`
