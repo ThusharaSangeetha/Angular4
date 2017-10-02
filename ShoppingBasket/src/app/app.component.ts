@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-
+// import {Footwear } from './footwear';
 @Component({
   selector: 'app-root',
   template: '<h1>{{title}}</h1>'+
   '<h2>Footwear Styles</h2>'+
   // '<input [(ngModel)] = "item.name" placeholder="Enter name...">'+
   '<ul class="footies">'+
-  '<li *ngFor = "let footwear of footies"   [class.selected]="hero === selectedHero" (click)="onSelect(footwear)">'+
+  '<li *ngFor = "let footwear of footies"   [class.selected]="footwear === selectedFootwear" (click)="onSelect(footwear)">'+
   '  <span class="badge">{{footwear.id}}</span> {{footwear.name}}</li>'+
-  '</ul>',
+  '</ul>'+
+  '<footwear-detail [footwear]="selectedFootwear"></footwear-detail>',
  styles: [`
   .selected {
     background-color: #CFD8DC !important;
@@ -32,7 +33,7 @@ import { Component } from '@angular/core';
   }
   .footies li.selected:hover {
     background-color: #BBD8DC !important;
-    color: white;
+    color: blue;
   }
   .footies li:hover {
     color: #607D8B;
