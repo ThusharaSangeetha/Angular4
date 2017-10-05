@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-// import {Footwear } from './footwear';
+import {Footwear } from './footwear';
+import { FootwearService }  from './footwear.service';
+import {footweararray} from './mock-footwear';
+
 @Component({
   selector: 'app-root',
+  providers:[FootwearService],
   template: '<h1>{{title}}</h1>'+
   '<h2>Footwear Styles</h2>'+
   // '<input [(ngModel)] = "item.name" placeholder="Enter name...">'+
@@ -68,18 +72,20 @@ export class AppComponent {
   selectedFootwear : Footwear;
   onSelect(footwear: Footwear): void {
   this.selectedFootwear = footwear;
+  
+  
 }
+constructor(private footwearService:FootwearService){}
+
+footwear : Footwear[];
+
+getHeroes(): void {
+  this.footwear = this.footwearService.getFootwears();
 }
-export class Footwear{
-  id: number;
-  name: string;
+  
 }
 
-const footweararray : Footwear[]= [
-{id:1,name:'Wedges'},
-{id:2,name:'Boots'},
-{id:3,name:'Ballerinas'},
-{id:4,name:'Flats'},
-{id:5,name:'High Heels'}
-];
+ 
+
+
 

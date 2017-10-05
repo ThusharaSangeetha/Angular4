@@ -1,5 +1,7 @@
 import { Component, Input} from '@angular/core';
 import { Footwear }  from './footwear';
+import { FootwearService }  from './footwear.service';
+
 @Component({
     selector: 'footwear-detail',
     template: `
