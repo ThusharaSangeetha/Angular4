@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import {Footwear } from './footwear';
 import { FootwearService }  from './footwear.service';
 import {footweararray} from './mock-footwear';
@@ -65,17 +65,19 @@ import {footweararray} from './mock-footwear';
   
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Shopping Items';
   footies = footweararray;
   selectedFootwear : Footwear;
-
+  ngOnInit() :void{
+    this.getHeroes();
+  }
 
   footwear : Footwear[];
   constructor(private footwearService:FootwearService){}
 
   getHeroes(): void {
-      this.footwear = this.footwearService.getFootwears();
+    this.footwearService.getFootwears().then(footwear=> this.footwear=footwear);
   }
 
   onSelect(footwear: Footwear): void {

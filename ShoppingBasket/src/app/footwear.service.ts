@@ -5,8 +5,8 @@ import {footweararray} from './mock-footwear';
 @Injectable()
 
 export class FootwearService{
-    getFootwears():Footwear[] {
-        return footweararray;
+    getFootwears():Promise<Footwear[]> {
+        return Promise.resolve(footweararray);
       
     }
 }
