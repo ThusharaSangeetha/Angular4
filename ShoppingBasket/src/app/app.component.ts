@@ -8,18 +8,17 @@ import {footweararray} from './mock-footwear';
   providers:[FootwearService],
   template: '<h1>{{title}}</h1>'+
   '<h2>Footwear Styles</h2>'+
-  // '<input [(ngModel)] = "item.name" placeholder="Enter name...">'+
-  '<ul class="footies">'+
-  '<li *ngFor = "let footwear of footies"   [class.selected]="footwear === selectedFootwear" (click)="onSelect(footwear)">'+
+   '<ul class="footies">'+
+   '<li *ngFor = "let footwear of footies"   [class.selected]="footwear === selectedFootwear" (click)="onSelect(footwear)">'+
   '  <span class="badge">{{footwear.id}}</span> {{footwear.name}}</li>'+
-  '</ul>'+
+   '</ul>'+
   '<footwear-detail [footwear]="selectedFootwear"></footwear-detail>',
  styles: [`
   .selected {
     background-color: #CFD8DC !important;
     color: white;
   }
-  .heroes {
+  .footies {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
@@ -70,18 +69,18 @@ export class AppComponent {
   title = 'Shopping Items';
   footies = footweararray;
   selectedFootwear : Footwear;
+
+
+  footwear : Footwear[];
+  constructor(private footwearService:FootwearService){}
+
+  getHeroes(): void {
+      this.footwear = this.footwearService.getFootwears();
+  }
+
   onSelect(footwear: Footwear): void {
-  this.selectedFootwear = footwear;
-  
-  
-}
-constructor(private footwearService:FootwearService){}
-
-footwear : Footwear[];
-
-getHeroes(): void {
-  this.footwear = this.footwearService.getFootwears();
-}
+      this.selectedFootwear = footwear;
+  }
   
 }
 

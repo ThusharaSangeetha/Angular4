@@ -5,7 +5,7 @@ import {footweararray} from './mock-footwear';
 @Injectable()
 
 export class FootwearService{
-    getFootwears():Footwear[]{
+    getFootwears():Footwear[] {
         return footweararray;
       
     }
