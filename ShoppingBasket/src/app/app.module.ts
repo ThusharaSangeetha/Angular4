@@ -6,7 +6,7 @@ import { FootwearDetailComponent } from './footwear-detail.component';
 import { FootwearService }  from './footwear.service';
 import {RouterModule,Routes} from '@angular/router'
 import { FootwearsComponent }     from './footwears.component';
-
+import { DashboardComponent }     from './dashboard.component';
 
 const appRoutes : Routes = [
   // {
@@ -29,8 +29,12 @@ const appRoutes : Routes = [
   // },
   {
     path:'',
-    redirectTo: '/footwears',
+    redirectTo: '/dashboard',
     pathMatch: 'full'
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
   }
   // ,
   // {
@@ -48,7 +52,8 @@ const appRoutes : Routes = [
   declarations: [
     AppComponent,
     FootwearDetailComponent,
-    FootwearsComponent
+    FootwearsComponent,
+    DashboardComponent
   ],
   providers: [FootwearService],
   bootstrap: [AppComponent]
