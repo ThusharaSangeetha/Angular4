@@ -9,4 +9,8 @@ export class FootwearService{
         return Promise.resolve(footweararray);
       
     }
+    getFootwear(id: number): Promise<Footwear> {
+        return this.getFootwears()
+             .then(footwears => footwears.find(footwear => footwear.id === id));
+    }
 }

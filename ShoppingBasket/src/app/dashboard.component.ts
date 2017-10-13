@@ -1,9 +1,17 @@
-import {Component} from '@angular/core';
 
+import { Component, OnInit } from '@angular/core';
+
+import { Footwear } from './footwear';
+import { FootwearService } from './footwear.service';
 @Component({
     selector: 'footwear-dashboard',
-    template: '<h3>Footwear Dashboard</h3>'
+    templateUrl: './dashboard.component.html'
 })
-export class DashboardComponent{
-
+export class DashboardComponent implements OnInit{ 
+   footwears: Footwear[]=[];
+     constructor(private footwearService: FootwearService) { }
+   ngOnInit():void {
+        this.footwearService.getFootwears().
+            then(footwears=>this.footwears = footwears.slice(1,3));
+   }
 }

@@ -72,13 +72,13 @@ export class FootwearsComponent implements OnInit {
   footies = footweararray;
   selectedFootwear : Footwear;
   ngOnInit() :void{
-    this.getHeroes();
+    this.getFootwears();
   }
 
   footwear : Footwear[];
   constructor(private footwearService:FootwearService){}
 
-  getHeroes(): void {
+  getFootwears(): void {
     this.footwearService.getFootwears().then(footwear=> this.footwear=footwear);
   }
 

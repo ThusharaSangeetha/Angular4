@@ -1,6 +1,9 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input,OnInit} from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location }                 from '@angular/common';
 import { Footwear }  from './footwear';
 import { FootwearService }  from './footwear.service';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     selector: 'footwear-detail',
@@ -15,7 +18,21 @@ import { FootwearService }  from './footwear.service';
     </div>`
 })
 
-export class FootwearDetailComponent
+export class FootwearDetailComponent implements OnInit
 {
      @Input() footwear: Footwear;
+   
+    
+     constructor(
+      private footwearService: FootwearService,
+      private route: ActivatedRoute,
+      private location: Location
+     ) {
+
+       }
+     ngOnInit() : void{
+       this.route.paramMap
+    .switchMap((params: ParamMap) => this.footwearService.getFootwear(+params.get('id')))
+    .subscribe(footwear => this.footwear = footwear);
+     }
 }
